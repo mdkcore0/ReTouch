@@ -26,11 +26,106 @@ Item {
     // for landscape
     //width: 854
     //height: 480
-    // or portrait
+    // for portrait
     width: 480
     height: 854
 
-    Component.onCompleted: {
-        console.log("yopa");
+    Rectangle {
+        anchors.fill: parent
+        color: "black"
+    }
+
+    TouchArea {
+        id: touch
+
+        color: "black"
+        border.color: "#00eca1"
+        border.width: 2
+        radius: border.width
+
+        anchors {
+            top: parent.top
+            topMargin: 10
+            left: parent.left
+            leftMargin: 10
+            right: parent.right
+            rightMargin: 10
+            bottom: left.top
+            bottomMargin: 10
+        }
+
+        onPressed: {
+            console.log("Mouse press at:", mouse.x, mouse.y);
+        }
+
+        onReleased: {
+            console.log("Mouse release at:", mouse.x, mouse.y);
+        }
+
+        onDoubleClicked: {
+            console.log("Mouse double click at:", mouse.x, mouse.y);
+        }
+
+        onPositionChanged: {
+            console.log("Position changed:", mouse.x, mouse.y);
+        }
+    }
+
+    Button {
+        id: left
+
+        width: (root.width / 2) - 20
+        height: root.height * 0.1
+
+        color: touch.color
+        border.color: touch.border.color
+        border.width: touch.border.width
+        radius: touch.radius
+
+        anchors {
+            bottom: parent.bottom
+            bottomMargin: 10
+            left: parent.left
+            leftMargin: 10
+        }
+
+        onPressed: {
+            console.log("Left pressed");
+        }
+
+        onReleased: {
+            console.log("Left released");
+        }
+
+        onDoubleClicked: {
+            console.log("Left double clicked");
+        }
+    }
+
+    Button {
+        id: right
+
+        width: left.width
+        height: left.height
+
+        color: touch.color
+        border.color: touch.border.color
+        border.width: touch.border.width
+        radius: touch.radius
+
+        anchors {
+            bottom: parent.bottom
+            bottomMargin: 10
+            right: parent.right
+            rightMargin: 10
+        }
+
+        onPressed: {
+            console.log("Right pressed");
+        }
+
+        onReleased: {
+            console.log("Right released");
+        }
     }
 }
