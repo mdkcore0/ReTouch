@@ -51,7 +51,7 @@ Item {
             leftMargin: 10
             right: parent.right
             rightMargin: 10
-            bottom: left.top
+            bottom: buttons.top
             bottomMargin: 10
         }
 
@@ -72,61 +72,69 @@ Item {
         }
     }
 
-    Button {
-        id: left
+    Row {
+        id: buttons
 
-        width: (root.width / 2) - 20
-        height: root.height * 0.1
-
-        color: touch.color
-        border.color: touch.border.color
-        border.width: touch.border.width
-        radius: touch.radius
+        spacing: 10
+        width: parent.width
+        height: parent.height * 0.1
 
         anchors {
-            bottom: parent.bottom
-            bottomMargin: 10
             left: parent.left
             leftMargin: 10
-        }
-
-        onPressed: {
-            console.log("Left pressed");
-        }
-
-        onReleased: {
-            console.log("Left released");
-        }
-
-        onDoubleClicked: {
-            console.log("Left double clicked");
-        }
-    }
-
-    Button {
-        id: right
-
-        width: left.width
-        height: left.height
-
-        color: touch.color
-        border.color: touch.border.color
-        border.width: touch.border.width
-        radius: touch.radius
-
-        anchors {
             bottom: parent.bottom
             bottomMargin: 10
-            right: parent.right
-            rightMargin: 10
         }
 
-        onPressed: {
-            console.log("Right pressed");
+        Button {
+            id: left
+
+            width: (parent.width / 2) - 45
+            height: parent.height
+
+            color: touch.color
+            border.color: touch.border.color
+            border.width: touch.border.width
+            radius: touch.radius
+
+            onPressed: {
+                console.log("Left pressed");
+            }
+
+            onReleased: {
+                console.log("Left released");
+            }
+
+            onDoubleClicked: {
+                console.log("Left double clicked");
+            }
         }
 
-        onReleased: {
-            console.log("Right released");
+        Keyboard {
+            id: keyboard
+
+            width: 50
+            height: 50
+        }
+
+        Button {
+            id: right
+
+            width: (parent.width / 2) - 45
+            height: parent.height
+
+            color: touch.color
+            border.color: touch.border.color
+            border.width: touch.border.width
+            radius: touch.radius
+
+            onPressed: {
+                console.log("Right pressed");
+            }
+
+            onReleased: {
+                console.log("Right released");
+            }
         }
     }
 }

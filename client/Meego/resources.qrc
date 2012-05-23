@@ -3,5 +3,6 @@
     <file>qml/MainWindow.qml</file>
     <file>qml/Button.qml</file>
     <file>qml/TouchArea.qml</file>
+    <file>qml/Keyboard.qml</file>
 </qresource>
 </RCC>
