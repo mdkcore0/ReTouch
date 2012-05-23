@@ -27,7 +27,7 @@ Rectangle {
 
     border.color: "black"
     color: "white"
-    //smooth: true
+    smooth: true
 
     signal pressed(variant mouse);
     signal released(variant mouse);

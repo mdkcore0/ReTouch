@@ -42,6 +42,7 @@ Item {
         border.color: "#00eca1"
         border.width: 2
         radius: border.width
+        showTouchPoints: true
 
         anchors {
             top: parent.top

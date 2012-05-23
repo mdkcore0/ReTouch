@@ -23,9 +23,12 @@ import QtQuick 1.1
 Rectangle {
     id: root
 
+    property bool showTouchPoints: false
+
     border.color: "black"
     color: "white"
-    //smooth: true
+    smooth: true
+    clip: true
 
     signal pressed(variant mouse);
     signal released(variant mouse);
@@ -35,9 +38,42 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
 
-        onPressed: root.pressed(mouse)
+        onPressed: {
+            root.pressed(mouse)
+
+            if (root.showTouchPoints) {
+                var point;
+
+                point = touchPoint.createObject(root);
+                point.x = mouse.x - (point.width / 2);
+                point.y = mouse.y - (point.height / 2);
+            }
+        }
         onReleased: root.released(mouse)
         onDoubleClicked: root.doubleClicked(mouse)
         onPositionChanged: root.positionChanged(mouse)
+    }
+
+    Component {
+        id: touchPoint
+
+        Rectangle {
+            width: 50
+            height: width
+            smooth: true
+
+            color: root.border.color
+            radius: width / 2
+
+            NumberAnimation on opacity {
+                to: 0
+                duration: 1000
+            }
+
+            onOpacityChanged: {
+                if (opacity == 0)
+                    destroy();
+            }
+        }
     }
 }
