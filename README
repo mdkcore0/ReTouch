@@ -1,4 +1,8 @@
 ReTouch
 =======
 
-Touchpad and keyboard over wifi
+Touchpad and keyboard over wifi/bluetooth
+
+This is intended to run on Meego devices (touch/keyboard interface) and Linux desktops (server, aka "target")
+
+For screenshots and development blog, check: http://projects.thecoreme.org/retouch
